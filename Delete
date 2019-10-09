@@ -1,0 +1,29 @@
+ALTER PROC [dbo].[PupProfiles_Delete]
+			@Id INT
+
+
+AS
+
+/*
+
+DECLARE @_id INT = 1
+
+SELECT * From dbo.PupProfiles 
+WHERE Id = @_id;
+
+EXEC dbo.PupProfiles_Delete
+		@_id
+
+SELECT * From dbo.PupProfiles 
+WHERE Id = @_id;
+
+*/
+
+BEGIN
+
+
+DELETE FROM dbo.PupProfiles
+
+	WHERE [Id] = @Id
+
+END
