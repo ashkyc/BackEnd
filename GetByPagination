@@ -1,0 +1,38 @@
+ALTER PROC [dbo].[PupProfiles_GetByPagination]
+			@PageSize INT
+			,@PageIndex INT
+
+AS
+
+/*
+
+DECLARE @_pageSize INT = 1
+		,@_pageIndex INT = 0
+
+EXEC dbo.PupProfiles_GetByPagination
+		@_pageSize
+		,@_pageIndex
+
+*/
+
+BEGIN
+
+DECLARE @Offset INT = @PageIndex * @PageSize
+
+SELECT [Id]
+      ,[Name]
+      ,[AgeY]
+      ,[AgeM]
+      ,[Gender]
+      ,[BreedId]
+	  ,[OwnerId]
+	  ,TotalCount = COUNT(1)OVER()
+  FROM [dbo].[PupProfiles]
+
+  ORDER BY Id ASC
+
+  OFFSET @offset ROWS
+  FETCH NEXT @PageSize ROWS ONLY
+
+END
+
