@@ -1,0 +1,50 @@
+ALTER PROC [dbo].[PupProfiles_Update]
+			@Id INT
+			,@Name NVARCHAR(100)
+			,@AgeY INT
+			,@AgeM INT
+			,@Gender NVARCHAR(50)
+			,@BreedId INT
+			,@OwnerId INT
+
+
+AS
+
+/*
+
+DECLARE @_id INT = 1
+		,@_name NVARCHAR(100)= 'Truffle'
+		,@_ageY INT = 1
+		,@_ageM INT = 7
+		,@_gender NVARCHAR(50) = 'Female'
+		,@_breedId INT = 11
+		,@_ownerId INT = 1
+
+EXEC dbo.PupProfiles_Update
+		@_id
+		,@_name
+		,@_ageY
+		,@_ageM
+		,@_gender
+		,@_breedId
+		,@_ownerId
+
+SELECT * From dbo.PupProfiles 
+WHERE Id = @_id;
+
+*/
+
+BEGIN
+
+
+UPDATE dbo.PupProfiles
+	SET [Name] = @Name
+		,[AgeY] = @AgeY
+		,[AgeM] = @AgeM
+		,[Gender] = @Gender
+		,[BreedId] = @BreedId
+		,[OwnerId] = @OwnerId
+
+	WHERE [Id] = @Id
+
+END
