@@ -1,0 +1,52 @@
+ALTER PROC [dbo].[PupProfiles_Insert]
+			@Id INT OUT
+			,@Name NVARCHAR(100)
+			,@AgeY INT
+			,@AgeM INT
+			,@Gender NVARCHAR(50)
+			,@BreedId INT
+			,@OwnerId INT
+
+AS
+
+/*
+DECLARE @_id INT
+		,@_name NVARCHAR(100) = 'Truffle'
+		,@_ageY INT = 1
+		,@_ageM INT = 7
+		,@_gender NVARCHAR(50) = 'Female'
+		,@_breedId INT = 10
+		,@_ownerId INT = 1
+
+EXEC dbo.PupProfiles_Insert  @_id
+							,@_name
+							,@_ageY
+							,@_ageM
+							,@_gender
+							,@_breedId
+							,@_ownerId
+
+SELECT * FROM dbo.PupProfiles;
+
+*/
+
+
+BEGIN
+
+INSERT INTO [dbo].[PupProfiles]
+           ([Name]
+           ,[AgeY]
+           ,[AgeM]
+           ,[Gender]
+           ,[BreedId]
+		   ,[OwnerId])
+     VALUES
+           (@Name
+		   ,@AgeY
+		   ,@AgeM
+		   ,@Gender
+		   ,@BreedId
+		   ,@OwnerId)
+
+	SET @Id = SCOPE_IDENTITY()
+END
