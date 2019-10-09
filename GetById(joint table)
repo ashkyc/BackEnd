@@ -1,0 +1,32 @@
+ALTER PROC [dbo].[PupProfiles_GetByOwnerId]
+			@OwnerId INT
+
+AS
+
+/*
+
+DECLARE @_id INT = 1
+
+EXEC dbo.PupProfiles_GetByOwnerId
+	@_id
+
+*/
+
+BEGIN
+
+SELECT p.[Id]
+      ,p.[Name]
+      ,p.[AgeY]
+      ,p.[AgeM]
+      ,p.[Gender]
+	  ,p.[BreedId]
+      ,b.[BreedName] AS Breed
+	  ,p.[OwnerId]
+	  ,i.[Url]
+	  ,b.[AkcLink]
+  FROM [dbo].[PupProfiles] p INNER JOIN dbo.PupImages i ON  p.Id = i.PupId
+							 INNER JOIN dbo.AKCBreeds b ON p.BreedId = b.[Id]
+
+  WHERE p.OwnerId = @OwnerId;
+
+END
